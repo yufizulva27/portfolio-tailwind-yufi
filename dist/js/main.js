@@ -31,3 +31,25 @@ window.addEventListener('click', function(e) {
         navMenu.classList.add('hidden');
     }
 });
+
+//Dark Mode Toggle
+const darkTonggel = document.querySelector('#dark-toggle');
+const html = document.querySelector('html');
+
+darkTonggel.addEventListener('click', function() {
+    if (darkTonggel.checked) {
+        html.classList.add('dark');
+        localStorage.theme = 'dark';
+    } else {
+        html.classList.remove('dark');
+        localStorage.theme = 'light';
+    }
+});
+
+//Pindah posisi toggle sesuai mode
+
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    darkTonggel.checked = true;
+} else {
+    darkTonggel.checked = false
+}
